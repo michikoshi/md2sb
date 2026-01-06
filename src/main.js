@@ -3,6 +3,7 @@ import md2sb from 'md2sb';
 const markdownInput = document.getElementById('markdown-input');
 const scrapboxOutput = document.getElementById('scrapbox-output');
 const copyBtn = document.getElementById('copy-btn');
+const removeParensBtn = document.getElementById('remove-parens-btn');
 const themeToggle = document.getElementById('theme-toggle');
 
 // Debounce function
@@ -57,6 +58,23 @@ copyBtn.addEventListener('click', async () => {
   } catch (error) {
     console.error('Failed to copy:', error);
   }
+});
+
+// Remove parentheses
+removeParensBtn.addEventListener('click', () => {
+  const text = scrapboxOutput.value;
+  if (!text) return;
+
+  const cleanedText = text.replace(/\(\)/g, '');
+  scrapboxOutput.value = cleanedText;
+
+  removeParensBtn.textContent = 'Removed!';
+  removeParensBtn.classList.add('removed');
+
+  setTimeout(() => {
+    removeParensBtn.textContent = 'Remove ()';
+    removeParensBtn.classList.remove('removed');
+  }, 2000);
 });
 
 // Theme toggle

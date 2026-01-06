@@ -119,7 +119,13 @@ main {
   color: var(--text-secondary);
 }
 
-#copy-btn {
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#copy-btn,
+#remove-parens-btn {
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -130,11 +136,16 @@ main {
   transition: background-color 0.2s;
 }
 
-#copy-btn:hover {
+#copy-btn:hover,
+#remove-parens-btn:hover {
   background-color: var(--accent-hover);
 }
 
 #copy-btn.copied {
+  background-color: #28a745;
+}
+
+#remove-parens-btn.removed {
   background-color: #28a745;
 }
 
